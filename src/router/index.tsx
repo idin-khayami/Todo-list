@@ -1,17 +1,21 @@
+import { Suspense } from 'react';
 import { Router as ReactRouter, Route, Switch } from 'react-router-dom';
 import NotFound from '../pages/NotFound';
 import history from '../utils/history';
 import routes from './routes';
+import SplashScreen from '../components/SplashScreen';
 
 const Router = () => {
   return (
     <ReactRouter history={history}>
-      <Switch>
-        {routes.map((route) => (
-          <Route key={route.path} {...route} exact={route.exact ?? true} />
-        ))}
-        <Route component={NotFound} />
-      </Switch>
+      <Suspense fallback={<SplashScreen />}>
+        <Switch>
+          {routes.map((route) => (
+            <Route key={route.path} {...route} exact={route.exact ?? true} />
+          ))}
+          <Route component={NotFound} />
+        </Switch>
+      </Suspense>
     </ReactRouter>
   );
 };
