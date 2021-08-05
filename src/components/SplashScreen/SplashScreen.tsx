@@ -1,5 +1,5 @@
 const SplashScreen = () => {
-  return <p>SplashScreen</p>;
+  return <p>Splash Screen</p>;
 };
 
 export default SplashScreen;

@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Router as ReactRouter, Route, Switch } from 'react-router-dom';
+import SplashScreen from '../components/SplashScreen';
 import NotFound from '../pages/NotFound';
 import history from '../utils/history';
 import routes from './routes';
-import SplashScreen from '../components/SplashScreen';
 
 const Router = () => {
   return (

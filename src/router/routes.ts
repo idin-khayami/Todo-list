@@ -1,7 +1,7 @@
-import paths from './paths';
-import TaskList from '../pages/TaskList';
-import TaskDetail from '../pages/TaskDetail';
 import NotFound from '../pages/NotFound';
+import TaskDetail from '../pages/TaskDetail';
+import TaskList from '../pages/TaskList';
+import paths from './paths';
 
 const routes = [
   {
