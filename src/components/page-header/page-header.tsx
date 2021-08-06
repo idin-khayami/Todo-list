@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 interface PageHeaderProps {
-  title: string;
+  title: string
 }
 
 function PageHeader({ title }: PageHeaderProps) {
