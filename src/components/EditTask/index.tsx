@@ -1,15 +1,15 @@
 import { Box, Typography } from '@material-ui/core'
 import TaskForm from '../TaskForm'
 
-const AddNewTask = () => {
+const EditTask = () => {
   return (
     <Box display="flex" flexDirection="column" flexGrow="1" my={1} p={2}>
       <Typography variant="h6" component="p">
-        Add a new task
+        Edit Task
       </Typography>
       <TaskForm />
     </Box>
   )
 }
 
-export default AddNewTask
+export default EditTask
