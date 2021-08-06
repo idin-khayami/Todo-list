@@ -1,7 +1,9 @@
-import EditTask from '../pages/edit-task';
-import Home from '../pages/home/home';
-import NotFound from '../pages/not-found';
+import { lazy } from 'react';
 import paths from './paths';
+
+const Home = lazy(() => import('../pages/home'));
+const NotFound = lazy(() => import('../pages/not-found'));
+const EditTask = lazy(() => import('../pages/edit-task'));
 
 const routes = [
   {
