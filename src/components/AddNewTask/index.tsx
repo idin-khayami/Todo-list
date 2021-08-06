@@ -31,6 +31,7 @@ const AddNewTask = () => {
           color="primary"
           variant="contained"
           fullWidth
+          size="large"
           startIcon={<AddIcon />}
         >
           Add
