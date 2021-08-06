@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { MdChevronRight } from 'react-icons/md';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 interface PageHeaderProps {
   title: string
@@ -21,7 +21,7 @@ function PageHeader(props: PageHeaderProps) {
         <Typography variant="h6" component="h1">
           Task Management
         </Typography>
-        <MdChevronRight size="24px" />
+        <ChevronRightIcon />
         <Typography variant="h6" component="h1">
           {title}
         </Typography>
