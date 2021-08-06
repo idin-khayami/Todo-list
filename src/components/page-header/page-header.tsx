@@ -4,11 +4,10 @@ import Typography from '@material-ui/core/Typography';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 interface PageHeaderProps {
-  title: string
+  title: string;
 }
 
-function PageHeader(props: PageHeaderProps) {
-  const { title } = props;
+function PageHeader({ title }: PageHeaderProps) {
   return (
     <Grid item xs={12} sm={12}>
       <Box
