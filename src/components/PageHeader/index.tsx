@@ -1,8 +1,8 @@
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -13,14 +13,14 @@ const useStyles = makeStyles(
   {
     name: 'page-header',
   },
-);
+)
 
 interface PageHeaderProps {
-  title: string;
+  title: string
 }
 
 function PageHeader({ title }: PageHeaderProps) {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Grid item xs={12} sm={12}>
       <Box
@@ -39,7 +39,7 @@ function PageHeader({ title }: PageHeaderProps) {
         </Typography>
       </Box>
     </Grid>
-  );
+  )
 }
 
-export default PageHeader;
+export default PageHeader

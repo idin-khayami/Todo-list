@@ -1,5 +1,5 @@
-import { Box, Button, TextField, Typography } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import { Box, Button, TextField, Typography } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add'
 
 const AddNewTask = () => {
   return (
@@ -37,7 +37,7 @@ const AddNewTask = () => {
         </Button>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default AddNewTask;
+export default AddNewTask

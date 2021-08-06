@@ -1,11 +1,11 @@
-import { Suspense } from 'react';
-import { Router as ReactRouter, Route, Switch } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core';
-import SplashScreen from '../components/SplashScreen';
-import NotFound from '../pages/NotFound';
-import theme from '../theme/theme';
-import history from '../utils/history';
-import routes from './routes';
+import { Suspense } from 'react'
+import { Router as ReactRouter, Route, Switch } from 'react-router-dom'
+import { ThemeProvider } from '@material-ui/core'
+import SplashScreen from '../components/SplashScreen'
+import NotFound from '../pages/NotFound'
+import theme from '../theme/theme'
+import history from '../utils/history'
+import routes from './routes'
 
 const Router = () => {
   return (
@@ -21,7 +21,7 @@ const Router = () => {
         </Suspense>
       </ReactRouter>
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default Router;
+export default Router

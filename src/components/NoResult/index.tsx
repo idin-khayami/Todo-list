@@ -1,5 +1,5 @@
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
 
 const NoResult = () => {
   return (
@@ -11,7 +11,7 @@ const NoResult = () => {
         Go get some sleep.
       </Typography>
     </Box>
-  );
-};
+  )
+}
 
-export default NoResult;
+export default NoResult

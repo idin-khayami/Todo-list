@@ -1,9 +1,9 @@
-import { lazy } from 'react';
-import paths from './paths';
+import { lazy } from 'react'
+import paths from './paths'
 
-const Home = lazy(() => import('../pages/Home'));
-const NotFound = lazy(() => import('../pages/NotFound'));
-const EditTask = lazy(() => import('../pages/EditTask'));
+const Home = lazy(() => import('../pages/Home'))
+const NotFound = lazy(() => import('../pages/NotFound'))
+const EditTask = lazy(() => import('../pages/EditTask'))
 
 const routes = [
   {
@@ -19,6 +19,6 @@ const routes = [
     component: EditTask,
     path: paths.editTask(0),
   },
-];
+]
 
-export default routes;
+export default routes

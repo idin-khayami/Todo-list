@@ -1,8 +1,8 @@
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import AddNewTask from '../../components/AddNewTask';
-import NoResult from '../../components/NoResult';
-import PageHeader from '../../components/PageHeader';
+import Paper from '@material-ui/core/Paper'
+import { makeStyles } from '@material-ui/core/styles'
+import AddNewTask from '../../components/AddNewTask'
+import NoResult from '../../components/NoResult'
+import PageHeader from '../../components/PageHeader'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 500,
     margin: `${theme.spacing(0)}px auto`,
   },
-}));
+}))
 
 const Home = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -29,7 +29,7 @@ const Home = () => {
         <NoResult />
       </Paper>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
