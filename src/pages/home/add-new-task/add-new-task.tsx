@@ -1,12 +1,25 @@
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import BaseButton from '../../../components/base-button';
 import TextFields from '../../../components/text-field';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: '16px',
+  },
+  addButton: {
+    margin: `${theme.spacing(2)}px 0`,
+    fontSize: '16px',
+  },
+}));
+
 const AddNewTask = () => {
+  const classes = useStyles();
   return (
-    <Grid item xs={12} sm={12}>
+    <div className={classes.root}>
       <Box
         color="text.primary"
         component="div"
@@ -18,9 +31,9 @@ const AddNewTask = () => {
         </Typography>
         <TextFields id="title" label="Title" />
         <TextFields id="description" label="Description" multiline={true} />
-        <BaseButton buttonText="Add" />
+        <BaseButton className={classes.addButton} label="Add" color="blue" />
       </Box>
-    </Grid>
+    </div>
   );
 };
 
