@@ -1,22 +1,21 @@
-import NotFound from '../pages/NotFound';
-import TaskDetail from '../pages/TaskDetail';
-import TaskList from '../pages/TaskList';
+import EditTask from '../pages/edit-task';
+import Home from '../pages/home/home';
+import NotFound from '../pages/not-found';
 import paths from './paths';
 
 const routes = [
   {
-    component: TaskList,
+    component: Home,
     path: paths.taskList,
-    exact: true,
   },
   {
     component: NotFound,
     path: paths.notFound,
+    exact: false,
   },
   {
-    component: TaskDetail,
-    path: paths.taskDetail(0),
-    exact: true,
+    component: EditTask,
+    path: paths.editTask(0),
   },
 ];
 

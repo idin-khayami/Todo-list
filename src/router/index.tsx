@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Router as ReactRouter, Route, Switch } from 'react-router-dom';
-import SplashScreen from '../components/SplashScreen';
-import NotFound from '../pages/NotFound';
+import SplashScreen from '../components/splash-screen/splash-screen';
+import NotFound from '../pages/not-found';
 import history from '../utils/history';
 import routes from './routes';
 
