@@ -2,12 +2,12 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 interface BaseButtonProps {
-  label: string;
-  color: any; //ToDo
-  className?: string;
-  outline?: boolean;
-  loading?: boolean;
-  disabled?: boolean;
+  label: string
+  color: any //ToDo
+  className?: string
+  outline?: boolean
+  loading?: boolean
+  disabled?: boolean
 }
 
 function BaseButton({

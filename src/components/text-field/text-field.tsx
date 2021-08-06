@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface TextFieldsProps {
-  id: string;
-  label: string;
-  multiline?: boolean;
+  id: string
+  label: string
+  multiline?: boolean
 }
 
 function TextFields({ id, label, multiline = false }: TextFieldsProps) {
