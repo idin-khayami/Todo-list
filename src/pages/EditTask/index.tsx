@@ -1,4 +1,4 @@
-import PageHeader from '../../components/PageHeader';
+import PageHeader from '../../components/PageHeader'
 
 const EditTask = () => {
   return (
@@ -6,7 +6,7 @@ const EditTask = () => {
       <PageHeader title="Edit" />
       EditTask
     </div>
-  );
-};
+  )
+}
 
-export default EditTask;
+export default EditTask
