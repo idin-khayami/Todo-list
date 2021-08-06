@@ -1,4 +1,4 @@
-import PageHeader from '../../components/page-header';
+import PageHeader from '../../components/PageHeader';
 
 const EditTask = () => {
   return (
