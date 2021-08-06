@@ -1,5 +1,12 @@
+import PageHeader from '../../components/page-header';
+
 const EditTask = () => {
-  return <p>Edit Task</p>;
+  return (
+    <div>
+      <PageHeader title="Edit" />
+      EditTask
+    </div>
+  );
 };
 
 export default EditTask;
