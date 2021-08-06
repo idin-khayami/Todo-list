@@ -1,5 +1,21 @@
-import Box from '@material-ui/core/Box'
+import { Box, LinearProgress, Typography } from '@material-ui/core'
 
 export default function SplashScreen() {
-  return <Box>salam</Box>
+  return (
+    <Box
+      height="100vh"
+      mx={2}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      flexGrow={1}
+    >
+      <Box my={2} textAlign="center">
+        <Typography variant="h6" component="p" color="primary">
+          Loading...
+        </Typography>
+      </Box>
+      <LinearProgress />
+    </Box>
+  )
 }
