@@ -15,8 +15,8 @@ const TaskForm = () => {
   const { handleSubmit, control, formState } = useForm<TaskFormFields>({
     mode: 'all',
   })
-  const handleSubmitTaskForm = () => {
-    console.log('hello! we are here!')
+  const handleSubmitTaskForm = (data: TaskFormFields) => {
+    console.log(data)
   }
 
   return (
