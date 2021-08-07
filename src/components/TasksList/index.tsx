@@ -1,14 +1,28 @@
-import { Box, Grid, Typography } from '@material-ui/core'
-import NoResult from '../NoResult'
+import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
+// import NoResult from '../NoResult'
+import TaskCard from '../TaskCard'
+
+const useStyles = makeStyles(
+  (theme) => ({
+    topBorderRadius: {
+      borderTopLeftRadius: theme.spacing(3),
+      borderTopRightRadius: theme.spacing(3),
+    },
+  }),
+  {
+    name: 'task-list',
+  },
+)
 
 function TaskList() {
+  const classes = useStyles()
   return (
-    <>
+    <Box px={2}>
       <Grid item xs={12} sm={12}>
         <Box
+          className={classes.topBorderRadius}
           color="primary.contrastText"
           bgcolor="primary.main"
-          borderRadius={16}
           p={2}
           height="50px"
         >
@@ -19,19 +33,35 @@ function TaskList() {
       </Grid>
       <Grid item xs={12} sm={12}>
         <Box
+          className={classes.topBorderRadius}
           display="flex"
           alignItems="flex-start"
           color="primary.contrastText"
           bgcolor="primary.light"
-          borderRadius={16}
           p={3}
           px={2}
           mt={-3}
         >
-          <NoResult />
+          <Box display="flex">
+            <Box px={2}>
+              <TaskCard
+                title="salam"
+                description="test mikonim"
+                status="to do"
+              />
+            </Box>
+            <Box px={2}>
+              <TaskCard
+                title="salam"
+                description="test mikonim"
+                status="to do"
+              />
+            </Box>
+          </Box>
+          {/* <NoResult /> */}
         </Box>
       </Grid>
-    </>
+    </Box>
   )
 }
 
