@@ -1,5 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
-// import NoResult from '../NoResult'
+import { Task } from '../../types'
+import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
 
 const useStyles = makeStyles(
@@ -14,12 +15,17 @@ const useStyles = makeStyles(
   },
 )
 
-function TaskList() {
+interface TaskListProps {
+  tasks: Task[]
+}
+
+function TaskList({ tasks }: TaskListProps) {
   const classes = useStyles()
   return (
-    <Box px={2}>
-      <Grid item xs={12} sm={12}>
+    <Box px={2} flexGrow={1} display="flex" flexDirection="column">
+      <Box width="100%">
         <Box
+          flexGrow={1}
           className={classes.topBorderRadius}
           color="primary.contrastText"
           bgcolor="primary.main"
@@ -30,35 +36,36 @@ function TaskList() {
             Tasks
           </Typography>
         </Box>
-      </Grid>
-      <Box display="flex" flexDirection="column">
-        <Box
-          className={classes.topBorderRadius}
-          display="flex"
-          alignItems="flex-start"
-          color="primary.contrastText"
-          bgcolor="primary.light"
-          p={3}
-          px={2}
-          mt={-3}
-        >
+      </Box>
+      <Box
+        className={classes.topBorderRadius}
+        display="flex"
+        alignItems="flex-start"
+        color="primary.contrastText"
+        bgcolor="primary.light"
+        flexDirection="column"
+        flexGrow={1}
+        p={3}
+        px={2}
+        mt={-3}
+      >
+        {tasks.length > 0 ? (
           <Grid container spacing={1}>
-            <Grid item xs={6} sm={6}>
-              <TaskCard
-                title="salam"
-                description="test mikonim bebinim chetorie bebinim chetorie salammm"
-                status="to do"
-              />
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <TaskCard
-                title="salam"
-                description="test mikonim bebinim chetorie bebinim chetorie salammm"
-                status="to do"
-              />
-            </Grid>
+            {tasks.map((task) => {
+              return (
+                <Grid key={task.id} item xs={6} sm={6}>
+                  <TaskCard
+                    title={task.title}
+                    description={task.description}
+                    status={task.status}
+                  />
+                </Grid>
+              )
+            })}
           </Grid>
-        </Box>
+        ) : (
+          <NoResult />
+        )}
       </Box>
       {/* <NoResult /> */}
     </Box>

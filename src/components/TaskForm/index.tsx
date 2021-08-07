@@ -1,26 +1,23 @@
 import { Controller, useForm } from 'react-hook-form'
 import { Box, Button, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
+import EditIcon from '@material-ui/icons/Edit'
+import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
 
-// interface TaskFormProps {
-//   handleSubmit: () => any
-// }
-
-interface TaskFormFields {
-  title: string
-  description: string
+interface TaskFormProps {
+  task?: Task
+  onSubmitTask: (data: Task) => void
 }
 
-const TaskForm = () => {
-  const { handleSubmit, control, formState } = useForm<TaskFormFields>({
+const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
+  const { handleSubmit, control, formState } = useForm<
+    CreateTaskInput | UpdateTaskInput
+  >({
     mode: 'all',
   })
-  const handleSubmitTaskForm = (data: TaskFormFields) => {
-    console.log(data)
-  }
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitTaskForm)}>
+    <form onSubmit={handleSubmit(onSubmitTask)}>
       <Box my={1} width="100%">
         <Controller
           name="title"
@@ -29,7 +26,7 @@ const TaskForm = () => {
             required: 'Title is required',
             validate: (value: string) => {
               if (value.length > 0 && value.length < 5) {
-                return 'Task must have at least 5 characters'
+                return 'Title must have at least 5 characters'
               }
             },
           }}
@@ -82,17 +79,46 @@ const TaskForm = () => {
         />
       </Box>
       <Box my={1} width="100%">
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          fullWidth
-          size="large"
-          startIcon={<AddIcon />}
-          disabled={!formState.isValid}
-        >
-          Add
-        </Button>
+        {task ? (
+          <Box display="flex" justifyContent="space-between">
+            <Box mx={1} width="100%">
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                fullWidth
+                size="large"
+                startIcon={<EditIcon />}
+                disabled={!formState.isValid}
+              >
+                Edit
+              </Button>
+            </Box>
+            <Box mx={1} width="100%">
+              <Button
+                type="submit"
+                color="primary"
+                variant="outlined"
+                fullWidth
+                size="large"
+              >
+                Cancel
+              </Button>
+            </Box>
+          </Box>
+        ) : (
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            fullWidth
+            size="large"
+            startIcon={<AddIcon />}
+            disabled={!formState.isValid}
+          >
+            Add
+          </Button>
+        )}
       </Box>
     </form>
   )
