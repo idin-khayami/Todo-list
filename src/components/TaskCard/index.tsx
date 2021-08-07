@@ -21,7 +21,7 @@ const TaskCard = ({ title, description, status }: TaskCardProps) => {
       <Typography variant="h5" component="h1">
         {title}
       </Typography>
-      <Box my={1}>
+      <Box mb={1}>
         <Typography variant="body2" component="p">
           {description}
         </Typography>

@@ -31,7 +31,7 @@ function TaskList() {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={12}>
+      <Box display="flex" flexDirection="column">
         <Box
           className={classes.topBorderRadius}
           display="flex"
@@ -42,21 +42,25 @@ function TaskList() {
           px={2}
           mt={-3}
         >
-          <Box display="flex" mx="auto">
-            <TaskCard
-              title="salam"
-              description="test mikonim bebinim chetorie bebinim chetorie salammm"
-              status="to do"
-            />
-            <TaskCard
-              title="salam"
-              description="test mikonim bebinim chetorie bebinim chetorie salammm"
-              status="to do"
-            />
-          </Box>
-          {/* <NoResult /> */}
+          <Grid container spacing={1}>
+            <Grid item xs={6} sm={6}>
+              <TaskCard
+                title="salam"
+                description="test mikonim bebinim chetorie bebinim chetorie salammm"
+                status="to do"
+              />
+            </Grid>
+            <Grid item xs={6} sm={6}>
+              <TaskCard
+                title="salam"
+                description="test mikonim bebinim chetorie bebinim chetorie salammm"
+                status="to do"
+              />
+            </Grid>
+          </Grid>
         </Box>
-      </Grid>
+      </Box>
+      {/* <NoResult /> */}
     </Box>
   )
 }
