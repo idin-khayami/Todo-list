@@ -10,7 +10,6 @@ interface TaskFormProps {
 }
 
 const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
-  console.log(task)
   const { handleSubmit, control, formState } = useForm<
     CreateTaskInput | UpdateTaskInput
   >({
