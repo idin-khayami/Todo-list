@@ -16,7 +16,7 @@ const TaskCard = ({ title, description, status }: TaskCardProps) => {
       flexDirection="column"
       borderRadius={8}
       p={1}
-      mx={1}
+      m={1}
     >
       <Typography variant="h5" component="h1">
         {title}
