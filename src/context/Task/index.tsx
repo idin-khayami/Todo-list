@@ -9,6 +9,7 @@ interface TaskContextType {
   updateTask: (data: UpdateTaskInput) => void
   getTask: (id: UUID) => Task | undefined
 }
+
 const DEFAULT_STATUS = 'ToDo'
 
 export const TasksContext = createContext<TaskContextType | null>(null)
@@ -41,16 +42,21 @@ function TaskContext({ children }: TaskContextProps) {
     return newTask
   }
 
-  const updateTask = (task: UpdateTaskInput) => {
-    console.log(task)
-  }
-
   const getTask = (id: UUID): Task | undefined => {
     return tasks.find((task) => task.id === id)
   }
 
+  const updateTask = (task: UpdateTaskInput): Task => {
+    // const taskTest = tasks.find((item) => item.id === task.id)
+    const newTask = task
+    const newTaskList: Task[] = [...tasks, newTask]
+    setTasks(newTaskList)
+    setTasksList(newTaskList)
+    return newTask
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks, getTask, createTask, updateTask }}>
+    <TasksContext.Provider value={{ tasks, createTask, getTask, updateTask }}>
       {children}
     </TasksContext.Provider>
   )
