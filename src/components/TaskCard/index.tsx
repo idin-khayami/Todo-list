@@ -40,7 +40,14 @@ const TaskCard = ({ title, description, status }: TaskCardProps) => {
             {status}
           </Typography>
         </Box>
-        <Button size="small" startIcon={<EditIcon />}></Button>
+        <Box
+          width="40px"
+          display="flex"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <Button size="small" startIcon={<EditIcon />}></Button>
+        </Box>
       </Box>
     </Box>
   )
