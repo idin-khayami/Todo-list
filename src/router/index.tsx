@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Router as ReactRouter, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import SplashScreen from '../components/SplashScreen'
+import ContextProviders from '../context'
 import NotFound from '../pages/NotFound'
 import theme from '../theme/theme'
 import history from '../utils/history'
@@ -12,12 +13,18 @@ const Router = () => {
     <ThemeProvider theme={theme}>
       <ReactRouter history={history}>
         <Suspense fallback={<SplashScreen />}>
-          <Switch>
-            {routes.map((route) => (
-              <Route key={route.path} {...route} exact={route.exact ?? true} />
-            ))}
-            <Route component={NotFound} />
-          </Switch>
+          <ContextProviders>
+            <Switch>
+              {routes.map((route) => (
+                <Route
+                  key={route.path}
+                  {...route}
+                  exact={route.exact ?? true}
+                />
+              ))}
+              <Route component={NotFound} />
+            </Switch>
+          </ContextProviders>
         </Suspense>
       </ReactRouter>
     </ThemeProvider>
