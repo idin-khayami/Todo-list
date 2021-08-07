@@ -1,7 +1,7 @@
 const paths = {
   taskList: '/',
   notFound: '/not-found',
-  editTask: (id: number): string => `/edit-task/${id || ':taskId'}`,
+  editTask: '/edit-task/:id',
 }
 
 export default paths

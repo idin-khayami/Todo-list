@@ -17,7 +17,7 @@ const routes = [
   },
   {
     component: EditTask,
-    path: paths.editTask(0),
+    path: paths.editTask,
   },
 ]
 

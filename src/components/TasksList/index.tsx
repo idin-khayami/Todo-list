@@ -58,6 +58,7 @@ function TaskList({ tasks }: TaskListProps) {
                     title={task.title}
                     description={task.description}
                     status={task.status}
+                    link={`/edit-task/${task.id}`}
                   />
                 </Grid>
               )
@@ -67,7 +68,6 @@ function TaskList({ tasks }: TaskListProps) {
           <NoResult />
         )}
       </Box>
-      {/* <NoResult /> */}
     </Box>
   )
 }

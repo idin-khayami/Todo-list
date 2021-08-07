@@ -1,12 +1,13 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { getTasksList, setTasksList } from '../../service/storage'
-import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
+import { CreateTaskInput, Task, UpdateTaskInput, UUID } from '../../types'
 
 interface TaskContextType {
   tasks: Task[]
   createTask: (data: CreateTaskInput) => void
   updateTask: (data: UpdateTaskInput) => void
+  getTask: (id: UUID) => Task | undefined
 }
 const DEFAULT_STATUS = 'ToDo'
 
@@ -28,25 +29,28 @@ function TaskContext({ children }: TaskContextProps) {
   const existingTasks = getTasksList()
   const [tasks, setTasks] = useState<Task[]>(existingTasks)
 
-  const createTask = (task: CreateTaskInput) => {
-    const newTaskList = [
-      ...tasks,
-      {
-        ...task,
-        id: uuidv4(),
-        status: DEFAULT_STATUS,
-      },
-    ]
+  const createTask = (task: CreateTaskInput): Task => {
+    const newTask: Task = {
+      ...task,
+      id: uuidv4(),
+      status: DEFAULT_STATUS,
+    }
+    const newTaskList: Task[] = [...tasks, newTask]
     setTasks(newTaskList)
     setTasksList(newTaskList)
+    return newTask
   }
 
   const updateTask = (task: UpdateTaskInput) => {
     console.log(task)
   }
 
+  const getTask = (id: UUID): Task | undefined => {
+    return tasks.find((task) => task.id === id)
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks, createTask, updateTask }}>
+    <TasksContext.Provider value={{ tasks, getTask, createTask, updateTask }}>
       {children}
     </TasksContext.Provider>
   )

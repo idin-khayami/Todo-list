@@ -1,5 +1,5 @@
 import { Controller, useForm } from 'react-hook-form'
-import { Box, Button, TextField } from '@material-ui/core'
+import { Box, Button, Grid, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
@@ -10,10 +10,16 @@ interface TaskFormProps {
 }
 
 const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
+  console.log(task)
   const { handleSubmit, control, formState } = useForm<
     CreateTaskInput | UpdateTaskInput
   >({
     mode: 'all',
+    defaultValues: {
+      title: task?.title,
+      description: task?.description,
+      status: task?.status,
+    },
   })
 
   return (
@@ -80,8 +86,8 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
       </Box>
       <Box my={1} width="100%">
         {task ? (
-          <Box display="flex" justifyContent="space-between">
-            <Box mx={1} width="100%">
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
               <Button
                 type="submit"
                 color="primary"
@@ -93,19 +99,13 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               >
                 Edit
               </Button>
-            </Box>
-            <Box mx={1} width="100%">
-              <Button
-                type="submit"
-                color="primary"
-                variant="outlined"
-                fullWidth
-                size="large"
-              >
+            </Grid>
+            <Grid item xs={6}>
+              <Button color="primary" variant="outlined" fullWidth size="large">
                 Cancel
               </Button>
-            </Box>
-          </Box>
+            </Grid>
+          </Grid>
         ) : (
           <Button
             type="submit"

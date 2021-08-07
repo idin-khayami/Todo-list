@@ -1,13 +1,14 @@
-import { Box, Button, Typography } from '@material-ui/core'
+import { Box, Link, Typography } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 
 interface TaskCardProps {
   title: string
   description: string
   status: string
+  link: string
 }
 
-const TaskCard = ({ title, description, status }: TaskCardProps) => {
+const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
   return (
     <Box
       bgcolor="white"
@@ -41,12 +42,14 @@ const TaskCard = ({ title, description, status }: TaskCardProps) => {
           </Typography>
         </Box>
         <Box
-          width="40px"
           display="flex"
-          justifyContent="flex-start"
+          flexGrow={1}
+          justifyContent="flex-end"
           alignItems="center"
         >
-          <Button size="small" startIcon={<EditIcon />}></Button>
+          <Link href={link}>
+            <EditIcon />
+          </Link>
         </Box>
       </Box>
     </Box>

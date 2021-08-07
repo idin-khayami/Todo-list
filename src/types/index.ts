@@ -1,4 +1,4 @@
-type UUID = string
+export type UUID = string
 
 interface BaseTask {
   title: string

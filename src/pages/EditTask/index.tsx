@@ -1,12 +1,14 @@
+import { useParams } from 'react-router-dom'
 import { Box, Typography } from '@material-ui/core'
 import PageHeader from '../../components/PageHeader'
 import TaskForm from '../../components/TaskForm'
-import { UpdateTaskInput } from '../../types'
+import { useTasks } from '../../context/Task'
+import { UUID } from '../../types'
 
 const EditTask = () => {
-  const updateTask = (data: UpdateTaskInput) => {
-    console.log('add', data)
-  }
+  const { updateTask, getTask } = useTasks()
+  const { id } = useParams<{ id: UUID }>()
+  const task = getTask(id)
 
   return (
     <>
@@ -15,7 +17,11 @@ const EditTask = () => {
         <Typography variant="h6" component="p">
           Edit Task
         </Typography>
-        <TaskForm onSubmitTask={updateTask} />
+        {task ? (
+          <TaskForm onSubmitTask={updateTask} task={task} />
+        ) : (
+          <Typography>Not Found</Typography>
+        )}
       </Box>
     </>
   )
