@@ -42,21 +42,17 @@ function TaskList() {
           px={2}
           mt={-3}
         >
-          <Box display="flex">
-            <Box px={2}>
-              <TaskCard
-                title="salam"
-                description="test mikonim"
-                status="to do"
-              />
-            </Box>
-            <Box px={2}>
-              <TaskCard
-                title="salam"
-                description="test mikonim"
-                status="to do"
-              />
-            </Box>
+          <Box display="flex" mx="auto">
+            <TaskCard
+              title="salam"
+              description="test mikonim bebinim chetorie bebinim chetorie salammm"
+              status="to do"
+            />
+            <TaskCard
+              title="salam"
+              description="test mikonim bebinim chetorie bebinim chetorie salammm"
+              status="to do"
+            />
           </Box>
           {/* <NoResult /> */}
         </Box>

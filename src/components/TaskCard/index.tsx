@@ -15,16 +15,27 @@ const TaskCard = ({ title, description, status }: TaskCardProps) => {
       display="flex"
       flexDirection="column"
       borderRadius={8}
-      p={2}
+      p={1}
+      mx={1}
     >
-      <Typography variant="h6" component="h1">
+      <Typography variant="h5" component="h1">
         {title}
       </Typography>
-      <Typography variant="body1" component="p">
-        {description}
-      </Typography>
-      <Box display="flex">
-        <Box bgcolor="info.main" color="info.contrastText" p={2}>
+      <Box my={1}>
+        <Typography variant="body2" component="p">
+          {description}
+        </Typography>
+      </Box>
+      <Box display="flex" justifyContent="space-between" mt={1}>
+        <Box
+          bgcolor="info.main"
+          color="info.contrastText"
+          py={1}
+          px={2}
+          borderRadius={8}
+          flexGrow="1"
+          textAlign="center"
+        >
           <Typography variant="body1" component="h6">
             {status}
           </Typography>
