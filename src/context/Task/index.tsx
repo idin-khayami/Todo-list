@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { STATUS_STATE_TO_DO } from '../../constants/status'
 import { getTasksList, setTasksList } from '../../service/storage'
 import { CreateTaskInput, Task, UpdateTaskInput, UUID } from '../../types'
 
@@ -9,8 +10,6 @@ interface TaskContextType {
   updateTask: (data: UpdateTaskInput) => void
   getTask: (id: UUID) => Task | undefined
 }
-
-const DEFAULT_STATUS = 'ToDo'
 
 export const TasksContext = createContext<TaskContextType | null>(null)
 
@@ -34,7 +33,7 @@ function TaskContext({ children }: TaskContextProps) {
     const newTask: Task = {
       ...task,
       id: uuidv4(),
-      status: DEFAULT_STATUS,
+      status: STATUS_STATE_TO_DO, //status when task created
     }
     const newTaskList: Task[] = [...tasks, newTask]
     setTasks(newTaskList)

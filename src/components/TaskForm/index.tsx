@@ -5,16 +5,27 @@ import {
   FormControl,
   Grid,
   InputLabel,
+  Link,
   makeStyles,
   Select,
   TextField,
 } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
+import {
+  VALIDATION_DESCRIPTION_MIN_LENGTH,
+  VALIDATION_TITLE_MIN_LENGTH,
+} from '../../constants/validation'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
 
 const useStyles = makeStyles(
   (theme) => ({
+    link: {
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'none',
+      },
+    },
     formControl: {
       margin: `${theme.spacing(1)} auto`,
       width: '100%',
@@ -50,10 +61,10 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
           name="title"
           control={control}
           rules={{
-            required: 'Title is required',
+            required: 'This field is required',
             validate: (value: string) => {
-              if (value.length > 0 && value.length < 5) {
-                return 'Title must have at least 5 characters'
+              if (value.length < VALIDATION_TITLE_MIN_LENGTH) {
+                return 'This field must have at least 5 characters'
               }
             },
           }}
@@ -79,9 +90,9 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
           name="description"
           control={control}
           rules={{
-            required: 'Description is required',
+            required: 'This field is required',
             validate: (value) => {
-              if (value.length < 15) {
+              if (value.length < VALIDATION_DESCRIPTION_MIN_LENGTH) {
                 return 'Task must have a long description'
               }
             },
@@ -136,9 +147,16 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Button color="primary" variant="outlined" fullWidth size="large">
-                Cancel
-              </Button>
+              <Link className={classes.link} href="/home">
+                <Button
+                  color="primary"
+                  variant="outlined"
+                  fullWidth
+                  size="large"
+                >
+                  Cancel
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         ) : (
