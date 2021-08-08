@@ -17,8 +17,8 @@ import {
   VALIDATION_TITLE_MIN_LENGTH,
 } from '../../constants/validation'
 import paths from '../../router/paths'
-import { getPossibleTaskStatus } from '../../service/get-possible-task-status'
-import { mapStatusStateToStatusName } from '../../service/mapping'
+import { getPossibleTaskStatus } from '../../service/status/get-possible-task-status'
+import { mapStatusStateToStatusName } from '../../service/status/mapping'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
 
 const useStyles = makeStyles(

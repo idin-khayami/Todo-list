@@ -1,6 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
 import classNames from 'classnames'
-import { mapStatusStateToStatusName } from '../../service/mapping'
+import { mapStatusStateToStatusName } from '../../service/status/mapping'
 import { Task } from '../../types'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
@@ -60,9 +60,9 @@ function TaskList({ tasks }: TaskListProps) {
       >
         {tasks.length > 0 ? (
           <Grid container spacing={1}>
-            {tasks.map((task) => {
+            {tasks.map((task, index) => {
               return (
-                <Grid key={task.id} item xs={6} sm={6}>
+                <Grid key={index} item xs={6} sm={6} md={4}>
                   <TaskCard
                     title={task.title}
                     description={task.description}

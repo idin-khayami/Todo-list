@@ -1,5 +1,6 @@
-import { Box, Link, Typography } from '@material-ui/core'
+import { Box, Link, makeStyles, Typography } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
+import classNames from 'classnames'
 
 interface TaskCardProps {
   title: string
@@ -8,7 +9,28 @@ interface TaskCardProps {
   link: string
 }
 
+const useStyles = makeStyles(
+  () => ({
+    textStyle: {
+      display: '-webkit-box',
+      maxWidth: '200px',
+      WebkitBoxOrient: 'vertical',
+      overflow: 'hidden',
+    },
+    titleStyle: {
+      WebkitLineClamp: 1,
+    },
+    descriptionStyle: {
+      WebkitLineClamp: 3,
+    },
+  }),
+  {
+    name: 'task-card',
+  },
+)
+
 const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
+  const classes = useStyles()
   return (
     <Box
       bgcolor="white"
@@ -16,16 +38,24 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-      height="150px"
+      height="170px"
       borderRadius={8}
       p={1}
       m={1}
     >
       <Box mb={1}>
-        <Typography variant="h5" component="h1">
+        <Typography
+          className={classNames(classes.textStyle, classes.titleStyle)}
+          variant="h5"
+          component="h1"
+        >
           {title}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography
+          className={classNames(classes.textStyle, classes.descriptionStyle)}
+          variant="body2"
+          component="p"
+        >
           {description}
         </Typography>
       </Box>
@@ -33,8 +63,7 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
         <Box
           bgcolor="info.main"
           color="info.contrastText"
-          py={1}
-          px={2}
+          p={1}
           borderRadius={8}
           flexGrow="1"
           textAlign="center"
