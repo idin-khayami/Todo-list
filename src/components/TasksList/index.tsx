@@ -1,5 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
 import { Task } from '../../types'
+import cx from '../../utils/class-names'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
 
@@ -8,6 +9,9 @@ const useStyles = makeStyles(
     topBorderRadius: {
       borderTopLeftRadius: theme.spacing(3),
       borderTopRightRadius: theme.spacing(3),
+    },
+    taskListContainer: {
+      overflowY: 'auto',
     },
   }),
   {
@@ -38,13 +42,14 @@ function TaskList({ tasks }: TaskListProps) {
         </Box>
       </Box>
       <Box
-        className={classes.topBorderRadius}
+        className={cx(classes.taskListContainer, classes.topBorderRadius)}
         display="flex"
         alignItems="flex-start"
         color="primary.contrastText"
         bgcolor="primary.light"
         flexDirection="column"
         flexGrow={1}
+        height="100px"
         p={3}
         px={2}
         mt={-3}
