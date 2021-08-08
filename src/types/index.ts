@@ -1,5 +1,13 @@
 export type UUID = string
 
+export type TaskStatus =
+  | 'ToDo'
+  | 'InProgress'
+  | 'Blocked'
+  | 'InQA'
+  | 'Done'
+  | 'Deployed'
+
 interface BaseTask {
   title: string
   description: string
@@ -7,7 +15,7 @@ interface BaseTask {
 
 export interface Task extends BaseTask {
   id: UUID
-  status: string
+  status: TaskStatus
 }
 
 export type CreateTaskInput = BaseTask

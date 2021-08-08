@@ -6,10 +6,10 @@ import {
   STATUS_STATE_IN_QA,
   STATUS_STATE_TO_DO,
 } from '../constants/status'
+import { TaskStatus } from '../types'
 
-export const mapStatusStateToStatusName = (status: string): string => {
-  let statusState = STATUS_STATE_TO_DO
-  const statusList: any = {
+export const mapStatusStateToStatusName = (status: TaskStatus): string => {
+  const statusList: { [key in TaskStatus]: string } = {
     [STATUS_STATE_TO_DO]: 'To Do',
     [STATUS_STATE_IN_PROGRESS]: 'In Progress',
     [STATUS_STATE_BLOCKED]: 'Blocked',
@@ -17,10 +17,6 @@ export const mapStatusStateToStatusName = (status: string): string => {
     [STATUS_STATE_DONE]: 'Done',
     [STATUS_STATE_DEPLOYED]: 'Deployed',
   }
-  for (const state in statusList) {
-    if (status.includes(state)) {
-      statusState = state
-    }
-  }
-  return statusList[statusState]
+
+  return statusList[status]
 }

@@ -1,18 +1,12 @@
-type TaskStatus =
-  | 'ToDo'
-  | 'InProgress'
-  | 'Blocked'
-  | 'InQA'
-  | 'Done'
-  | 'Deployed'
+import { TaskStatus } from '../types'
 
 const TASK_STATUS_MAP: { [key in TaskStatus]: TaskStatus[] } = {
-  ToDo: ['InProgress'],
-  InProgress: ['Blocked', 'InQA'],
-  Blocked: ['ToDo'],
-  InQA: ['ToDo', 'Done'],
-  Done: ['Deployed'],
-  Deployed: [],
+  ToDo: ['ToDo', 'InProgress'],
+  InProgress: ['InProgress', 'Blocked', 'InQA'],
+  Blocked: ['Blocked', 'ToDo'],
+  InQA: ['InQA', 'ToDo', 'Done'],
+  Done: ['Done', 'Deployed'],
+  Deployed: ['Deployed'],
 }
 
 export function getPossibleTaskStatus(status: TaskStatus): TaskStatus[] {
