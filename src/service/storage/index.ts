@@ -1,8 +1,9 @@
 import { Task } from '../../types'
+import { getItem, setItem } from '../../utils/storage'
 import { storageKeys } from './storage-keys'
 
 export const getTasksList = (): Task[] =>
-  JSON.parse(localStorage.getItem(storageKeys.tasksList) ?? '[]')
+  JSON.parse(getItem(storageKeys.tasksList) ?? '[]')
 
 export const setTasksList = (data: Task[]): void =>
-  localStorage.setItem(storageKeys.tasksList, JSON.stringify(data))
+  setItem(storageKeys.tasksList, JSON.stringify(data))
