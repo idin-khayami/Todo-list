@@ -21,3 +21,5 @@ export interface Task extends BaseTask {
 export type CreateTaskInput = BaseTask
 
 export type UpdateTaskInput = Task
+
+export type TaskInput = CreateTaskInput | UpdateTaskInput

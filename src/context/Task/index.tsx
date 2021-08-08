@@ -6,14 +6,14 @@ import {
   useState,
 } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { STATUS_STATE_TO_DO } from '../../constants/status'
+import { STATUS_TO_DO } from '../../constants/status'
 import { getTasksList, setTasksList } from '../../service/storage'
 import { CreateTaskInput, Task, UpdateTaskInput, UUID } from '../../types'
 
 interface TaskContextType {
   tasks: Task[]
-  createTask: (data: CreateTaskInput) => void
-  updateTask: (data: UpdateTaskInput) => void
+  createTask: (data: CreateTaskInput) => Task
+  updateTask: (data: UpdateTaskInput) => Task
   getTask: (id: UUID) => Task | undefined
 }
 
@@ -39,7 +39,7 @@ function TaskContext({ children }: TaskContextProps) {
       const newTask: Task = {
         ...task,
         id: uuidv4(),
-        status: STATUS_STATE_TO_DO, //status when task created
+        status: STATUS_TO_DO, //status when task created
       }
       const newTaskList: Task[] = [...tasks, newTask]
       setTasks(newTaskList)
@@ -57,13 +57,13 @@ function TaskContext({ children }: TaskContextProps) {
   )
 
   const updateTask = useCallback(
-    (task: UpdateTaskInput): Task[] => {
+    (task: UpdateTaskInput): Task => {
       const newTasksList = tasks.map((item) =>
         item.id === task.id ? task : item,
       )
       setTasks(newTasksList)
       setTasksList(newTasksList)
-      return newTasksList
+      return task
     },
     [tasks],
   )

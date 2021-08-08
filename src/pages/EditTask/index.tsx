@@ -1,15 +1,25 @@
+import { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { Box, Link, Typography } from '@material-ui/core'
 import PageHeader from '../../components/PageHeader'
 import TaskForm from '../../components/TaskForm'
 import { useTasks } from '../../context/Task'
 import paths from '../../router/paths'
-import { UUID } from '../../types'
+import { TaskInput, UpdateTaskInput, UUID } from '../../types'
 
 const EditTask = () => {
   const { updateTask, getTask } = useTasks()
   const { id } = useParams<{ id: UUID }>()
   const task = getTask(id)
+
+  const handleUpdateTask = useCallback(
+    (taskData: TaskInput) => {
+      // as this is an update case we can cast `taskData` to `UpdateTaskInput`
+      updateTask(taskData as UpdateTaskInput)
+      window.location.href = paths.taskList
+    },
+    [updateTask],
+  )
 
   return (
     <>
@@ -19,7 +29,7 @@ const EditTask = () => {
           Edit Task
         </Typography>
         {task ? (
-          <TaskForm onSubmitTask={updateTask} task={task} />
+          <TaskForm onSubmitTask={handleUpdateTask} task={task} />
         ) : (
           <Box my={2} textAlign="center">
             <Typography variant="h6" component="p" color="primary">
