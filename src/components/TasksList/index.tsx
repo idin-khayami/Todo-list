@@ -1,6 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
+import classNames from 'classnames'
 import { Task } from '../../types'
-import cx from '../../utils/class-names'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
 
@@ -42,7 +42,10 @@ function TaskList({ tasks }: TaskListProps) {
         </Box>
       </Box>
       <Box
-        className={cx(classes.taskListContainer, classes.topBorderRadius)}
+        className={classNames(
+          classes.taskListContainer,
+          classes.topBorderRadius,
+        )}
         display="flex"
         alignItems="flex-start"
         color="primary.contrastText"
