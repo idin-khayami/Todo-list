@@ -106,7 +106,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
           render={({ field }) => {
             return (
               <TextField
-                rows={4}
+                rows={5}
                 label="Description"
                 variant="filled"
                 id="description"

@@ -78,7 +78,7 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
           justifyContent="flex-end"
           alignItems="center"
         >
-          <Link href={link}>
+          <Link color="textPrimary" href={link}>
             <EditIcon />
           </Link>
         </Box>

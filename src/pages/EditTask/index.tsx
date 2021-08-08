@@ -36,7 +36,9 @@ const EditTask = () => {
               Sorry, the task you are looking for does not exist.
             </Typography>
             <Box my={3} textAlign="center">
-              <Link href={paths.taskList}>Go Home</Link>
+              <Link underline="none" href={paths.taskList}>
+                Go Home
+              </Link>
             </Box>
           </Box>
         )}
