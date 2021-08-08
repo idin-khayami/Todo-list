@@ -16,6 +16,7 @@ import {
   VALIDATION_DESCRIPTION_MIN_LENGTH,
   VALIDATION_TITLE_MIN_LENGTH,
 } from '../../constants/validation'
+import paths from '../../router/paths'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
 
 const useStyles = makeStyles(
@@ -147,7 +148,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Link className={classes.link} href="/home">
+              <Link className={classes.link} href={paths.taskList}>
                 <Button
                   color="primary"
                   variant="outlined"
