@@ -1,8 +1,29 @@
 import { Controller, useForm } from 'react-hook-form'
-import { Box, Button, Grid, TextField } from '@material-ui/core'
+import {
+  Box,
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  makeStyles,
+  Select,
+  TextField,
+} from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
+
+const useStyles = makeStyles(
+  (theme) => ({
+    formControl: {
+      margin: `${theme.spacing(1)} auto`,
+      width: '100%',
+    },
+  }),
+  {
+    name: 'task-form',
+  },
+)
 
 interface TaskFormProps {
   task?: Task
@@ -10,6 +31,7 @@ interface TaskFormProps {
 }
 
 const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
+  const classes = useStyles()
   const { handleSubmit, control, formState } = useForm<
     CreateTaskInput | UpdateTaskInput
   >({
@@ -83,6 +105,20 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
           }}
         />
       </Box>
+      {task && (
+        <FormControl variant="filled" className={classes.formControl}>
+          <InputLabel htmlFor="filled-status-native-simple">Status</InputLabel>
+          <Select
+            native
+            inputProps={{
+              name: 'status',
+              id: 'filled-status-native-simple',
+            }}
+          >
+            <option value={10}>Ten</option>
+          </Select>
+        </FormControl>
+      )}
       <Box my={1} width="100%">
         {task ? (
           <Grid container spacing={1}>
