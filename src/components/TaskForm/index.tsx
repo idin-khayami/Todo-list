@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import {
   Box,
@@ -18,17 +19,11 @@ import {
 } from '../../constants/validation'
 import paths from '../../router/paths'
 import { getPossibleTaskStatus } from '../../service/status/get-possible-task-status'
-import { mapStatusStateToStatusName } from '../../service/status/mapping'
-import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
+import { getStatusLabel } from '../../service/status/get-status-label'
+import { Task, TaskInput } from '../../types'
 
 const useStyles = makeStyles(
   (theme) => ({
-    link: {
-      textDecoration: 'none',
-      '&:hover': {
-        textDecoration: 'none',
-      },
-    },
     formControl: {
       margin: `${theme.spacing(1)} auto`,
       width: '100%',
@@ -41,27 +36,31 @@ const useStyles = makeStyles(
 
 interface TaskFormProps {
   task?: Task
-  onSubmitTask: (data: Task) => void
+  onSubmitTask: (taskData: TaskInput) => void
 }
 
 const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
   const classes = useStyles()
-  const { handleSubmit, control, formState } = useForm<
-    CreateTaskInput | UpdateTaskInput
-  >({
+  const { handleSubmit, control, formState, reset } = useForm<TaskInput>({
     mode: 'all',
-    defaultValues: task
-      ? {
-          id: task.id,
-          title: task.title,
-          description: task.description,
-          status: task.status,
-        }
-      : {},
+    defaultValues: {
+      id: task?.id ?? undefined,
+      title: task?.title ?? '',
+      description: task?.description ?? '',
+      status: task?.status ?? undefined,
+    },
   })
 
+  const handleSubmitTask = useCallback(
+    (taskData: TaskInput) => {
+      onSubmitTask(taskData)
+      reset()
+    },
+    [onSubmitTask, reset],
+  )
+
   return (
-    <form onSubmit={handleSubmit(onSubmitTask)}>
+    <form onSubmit={handleSubmit(handleSubmitTask)}>
       <Box my={1} width="100%">
         <Controller
           name="title"
@@ -142,7 +141,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
                   >
                     {getPossibleTaskStatus(task.status).map((item, index) => (
                       <option key={index} value={item}>
-                        {mapStatusStateToStatusName(item)}
+                        {getStatusLabel(item)}
                       </option>
                     ))}
                   </Select>
@@ -169,13 +168,8 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Link className={classes.link} href={paths.taskList}>
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  fullWidth
-                  size="large"
-                >
+              <Link href={paths.taskList} underline="none">
+                <Button variant="outlined" fullWidth size="large">
                   Cancel
                 </Button>
               </Link>
