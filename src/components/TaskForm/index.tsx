@@ -123,13 +123,13 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
       </Box>
       {task && (
         <FormControl variant="filled" className={classes.formControl}>
-          <InputLabel htmlFor="filled-status-native-simple">Status</InputLabel>
+          <InputLabel htmlFor="filled-status">Status</InputLabel>
           <Select
             native
             value={task.status}
             inputProps={{
               name: 'status',
-              id: 'filled-status-native-simple',
+              id: 'filled-status',
             }}
           >
             {getPossibleTaskStatus(task.status).map((item, index) => (
