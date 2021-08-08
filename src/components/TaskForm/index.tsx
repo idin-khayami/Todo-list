@@ -123,21 +123,32 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
       </Box>
       {task && (
         <FormControl variant="filled" className={classes.formControl}>
-          <InputLabel htmlFor="filled-status">Status</InputLabel>
-          <Select
-            native
-            value={task.status}
-            inputProps={{
-              name: 'status',
-              id: 'filled-status',
-            }}
-          >
-            {getPossibleTaskStatus(task.status).map((item, index) => (
-              <option key={index} value={item}>
-                {mapStatusStateToStatusName(item)}
-              </option>
-            ))}
-          </Select>
+          <Box my={1} width="100%">
+            <InputLabel htmlFor="filled-status">Status</InputLabel>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field }) => {
+                return (
+                  <Select
+                    fullWidth
+                    native
+                    inputProps={{
+                      name: 'status',
+                      id: 'filled-status',
+                    }}
+                    {...field}
+                  >
+                    {getPossibleTaskStatus(task.status).map((item, index) => (
+                      <option key={index} value={item}>
+                        {mapStatusStateToStatusName(item)}
+                      </option>
+                    ))}
+                  </Select>
+                )
+              }}
+            />
+          </Box>
         </FormControl>
       )}
       <Box my={1} width="100%">

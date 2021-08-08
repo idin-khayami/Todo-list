@@ -53,7 +53,7 @@ function TaskList({ tasks }: TaskListProps) {
         bgcolor="primary.light"
         flexDirection="column"
         flexGrow={1}
-        height="100px"
+        height="80px"
         p={3}
         px={2}
         mt={-3}
