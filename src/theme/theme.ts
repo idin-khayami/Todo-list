@@ -7,6 +7,9 @@ const theme = createTheme({
       light: '#a2ceed',
     },
   },
+  shape: {
+    borderRadius: 8,
+  },
 })
 
 export default theme

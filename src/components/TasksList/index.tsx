@@ -1,6 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
 import classNames from 'classnames'
-import { mapStatusStateToStatusName } from '../../service/status/mapping'
+import { getStatusLabel } from '../../service/status/get-status-label'
 import { Task } from '../../types'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
@@ -8,11 +8,19 @@ import TaskCard from '../TaskCard'
 const useStyles = makeStyles(
   (theme) => ({
     topBorderRadius: {
-      borderTopLeftRadius: theme.spacing(3),
-      borderTopRightRadius: theme.spacing(3),
+      borderTopLeftRadius: theme.shape.borderRadius,
+      borderTopRightRadius: theme.shape.borderRadius,
     },
     taskListContainer: {
       overflowY: 'auto',
+      '&::-webkit-scrollbar': {
+        width: '0.4em',
+      },
+      '&::-webkit-scrollbar-track': {},
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: theme.palette.common.black,
+        borderRadius: theme.shape.borderRadius,
+      },
     },
   }),
   {
@@ -66,7 +74,7 @@ function TaskList({ tasks }: TaskListProps) {
                   <TaskCard
                     title={task.title}
                     description={task.description}
-                    status={mapStatusStateToStatusName(task.status)}
+                    status={getStatusLabel(task.status)}
                     link={`/edit-task/${task.id}`}
                   />
                 </Grid>

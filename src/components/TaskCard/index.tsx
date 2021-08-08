@@ -11,16 +11,16 @@ interface TaskCardProps {
 
 const useStyles = makeStyles(
   () => ({
-    textStyle: {
+    textTruncate: {
       display: '-webkit-box',
       maxWidth: '200px',
       WebkitBoxOrient: 'vertical',
       overflow: 'hidden',
     },
-    titleStyle: {
+    title: {
       WebkitLineClamp: 1,
     },
-    descriptionStyle: {
+    description: {
       WebkitLineClamp: 3,
     },
   }),
@@ -45,14 +45,14 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
     >
       <Box mb={1}>
         <Typography
-          className={classNames(classes.textStyle, classes.titleStyle)}
+          className={classNames(classes.textTruncate, classes.title)}
           variant="h5"
           component="h1"
         >
           {title}
         </Typography>
         <Typography
-          className={classNames(classes.textStyle, classes.descriptionStyle)}
+          className={classNames(classes.textTruncate, classes.description)}
           variant="body2"
           component="p"
         >
