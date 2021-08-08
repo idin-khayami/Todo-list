@@ -17,6 +17,7 @@ import {
   VALIDATION_TITLE_MIN_LENGTH,
 } from '../../constants/validation'
 import paths from '../../router/paths'
+import { getPossibleTaskStatus } from '../../service/get-possible-task-status'
 import { mapStatusStateToStatusName } from '../../service/mapping'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
 
@@ -53,7 +54,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
       ? {
           title: task.title,
           description: task.description,
-          status: mapStatusStateToStatusName(task.status),
+          status: task.status,
         }
       : {},
   })
@@ -125,12 +126,17 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
           <InputLabel htmlFor="filled-status-native-simple">Status</InputLabel>
           <Select
             native
+            value={task.status}
             inputProps={{
               name: 'status',
               id: 'filled-status-native-simple',
             }}
           >
-            <option value={10}>Ten</option>
+            {getPossibleTaskStatus(task.status).map((item, index) => (
+              <option key={index} value={item}>
+                {mapStatusStateToStatusName(item)}
+              </option>
+            ))}
           </Select>
         </FormControl>
       )}
