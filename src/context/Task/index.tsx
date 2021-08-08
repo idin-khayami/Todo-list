@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { STATUS_STATE_TO_DO } from '../../constants/status'
 import { getTasksList, setTasksList } from '../../service/storage'
@@ -26,33 +32,41 @@ interface TaskContextProps {
 }
 
 function TaskContext({ children }: TaskContextProps) {
-  const existingTasks = getTasksList()
-  const [tasks, setTasks] = useState<Task[]>(existingTasks)
+  const [tasks, setTasks] = useState<Task[]>(getTasksList)
 
-  const createTask = (task: CreateTaskInput): Task => {
-    const newTask: Task = {
-      ...task,
-      id: uuidv4(),
-      status: STATUS_STATE_TO_DO, //status when task created
-    }
-    const newTaskList: Task[] = [...tasks, newTask]
-    setTasks(newTaskList)
-    setTasksList(newTaskList)
-    return newTask
-  }
+  const createTask = useCallback(
+    (task: CreateTaskInput): Task => {
+      const newTask: Task = {
+        ...task,
+        id: uuidv4(),
+        status: STATUS_STATE_TO_DO, //status when task created
+      }
+      const newTaskList: Task[] = [...tasks, newTask]
+      setTasks(newTaskList)
+      setTasksList(newTaskList)
+      return newTask
+    },
+    [tasks],
+  )
 
-  const getTask = (id: UUID): Task | undefined => {
-    return tasks.find((task) => task.id === id)
-  }
+  const getTask = useCallback(
+    (id: UUID): Task | undefined => {
+      return tasks.find((task) => task.id === id)
+    },
+    [tasks],
+  )
 
-  const updateTask = (task: UpdateTaskInput): Task => {
-    // const taskTest = tasks.find((item) => item.id === task.id)
-    const newTask = task
-    const newTaskList: Task[] = [...tasks, newTask]
-    setTasks(newTaskList)
-    setTasksList(newTaskList)
-    return newTask
-  }
+  const updateTask = useCallback(
+    (task: UpdateTaskInput): Task[] => {
+      const newTasksList = tasks.map((item) =>
+        item.id === task.id ? task : item,
+      )
+      setTasks(newTasksList)
+      setTasksList(newTasksList)
+      return newTasksList
+    },
+    [tasks],
+  )
 
   return (
     <TasksContext.Provider value={{ tasks, createTask, getTask, updateTask }}>
