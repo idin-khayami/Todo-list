@@ -17,6 +17,7 @@ import {
   VALIDATION_TITLE_MIN_LENGTH,
 } from '../../constants/validation'
 import paths from '../../router/paths'
+import { mapStatusStateToStatusName } from '../../service/mapping'
 import { CreateTaskInput, Task, UpdateTaskInput } from '../../types'
 
 const useStyles = makeStyles(
@@ -48,11 +49,13 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
     CreateTaskInput | UpdateTaskInput
   >({
     mode: 'all',
-    defaultValues: {
-      title: task?.title,
-      description: task?.description,
-      status: task?.status,
-    },
+    defaultValues: task
+      ? {
+          title: task.title,
+          description: task.description,
+          status: mapStatusStateToStatusName(task.status),
+        }
+      : {},
   })
 
   return (

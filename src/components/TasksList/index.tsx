@@ -1,5 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
 import classNames from 'classnames'
+import { mapStatusStateToStatusName } from '../../service/mapping'
 import { Task } from '../../types'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
@@ -65,7 +66,7 @@ function TaskList({ tasks }: TaskListProps) {
                   <TaskCard
                     title={task.title}
                     description={task.description}
-                    status={task.status}
+                    status={mapStatusStateToStatusName(task.status)}
                     link={`/edit-task/${task.id}`}
                   />
                 </Grid>
