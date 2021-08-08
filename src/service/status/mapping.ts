@@ -5,8 +5,8 @@ import {
   STATUS_STATE_IN_PROGRESS,
   STATUS_STATE_IN_QA,
   STATUS_STATE_TO_DO,
-} from '../constants/status'
-import { TaskStatus } from '../types'
+} from '../../constants/status'
+import { TaskStatus } from '../../types'
 
 export const mapStatusStateToStatusName = (status: TaskStatus): string => {
   const statusList: { [key in TaskStatus]: string } = {
