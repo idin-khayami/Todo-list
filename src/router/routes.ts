@@ -8,7 +8,7 @@ const EditTask = lazy(() => import('../pages/EditTask'))
 const routes = [
   {
     component: Home,
-    path: paths.taskList,
+    path: paths.home,
   },
   {
     component: NotFound,

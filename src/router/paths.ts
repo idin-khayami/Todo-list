@@ -1,5 +1,5 @@
 const paths = {
-  taskList: '/',
+  home: '/',
   notFound: '/not-found',
   editTask: '/edit-task/:id',
 }
