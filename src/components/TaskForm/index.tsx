@@ -42,8 +42,7 @@ interface TaskFormProps {
 const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
   const classes = useStyles()
   const { handleSubmit, control, formState, reset } = useForm<TaskInput>({
-    mode: 'onSubmit',
-    reValidateMode: 'onChange',
+    mode: 'all',
     defaultValues: {
       id: task?.id ?? undefined,
       title: task?.title ?? '',
@@ -75,7 +74,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
   const descriptionValidator = validate(VALIDATION_DESCRIPTION_MIN_LENGTH)
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitTask)}>
+    <form name="task-form" onSubmit={handleSubmit(handleSubmitTask)}>
       <Box my={1} width="100%">
         <Controller
           name="title"
@@ -87,7 +86,6 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               <TextField
                 label="Title"
                 variant="filled"
-                id="title"
                 fullWidth
                 size="medium"
                 error={!!formState.errors.title}
@@ -110,7 +108,6 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
                 rows={5}
                 label="Description"
                 variant="filled"
-                id="description"
                 fullWidth
                 multiline
                 size="medium"
@@ -131,15 +128,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               control={control}
               render={({ field }) => {
                 return (
-                  <Select
-                    fullWidth
-                    native
-                    inputProps={{
-                      name: 'status',
-                      id: 'filled-status',
-                    }}
-                    {...field}
-                  >
+                  <Select fullWidth native data-test-id="status" {...field}>
                     {getPossibleTaskStatus(task.status).map((item, index) => (
                       <option key={index} value={item}>
                         {getStatusLabel(item)}
