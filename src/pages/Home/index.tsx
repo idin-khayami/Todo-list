@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { Box, Typography } from '@material-ui/core'
-import Container from '../../components/Container'
-import Page from '../../components/Page'
-import PageHeader from '../../components/PageHeader'
-import TaskForm from '../../components/TaskForm'
-import TaskList from '../../components/TasksList'
-import { useTasks } from '../../context/Task'
-import { TaskInput } from '../../types'
+import Container from 'components/Container'
+import Page from 'components/Page'
+import PageHeader from 'components/PageHeader'
+import TaskForm from 'components/TaskForm'
+import TaskList from 'components/TasksList'
+import { useTasks } from 'context/Task'
+import { TaskInput } from 'types'
 
 const Home = () => {
   const { createTask, tasks } = useTasks()

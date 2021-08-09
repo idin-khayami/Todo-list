@@ -1,6 +1,6 @@
 import { Box, LinearProgress, Typography } from '@material-ui/core'
 
-export default function SplashScreen() {
+function SplashScreen() {
   return (
     <Box
       height="100vh"
@@ -19,3 +19,5 @@ export default function SplashScreen() {
     </Box>
   )
 }
+
+export default SplashScreen

@@ -1,14 +1,14 @@
 import { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
-import Container from '../../components/Container'
-import Page from '../../components/Page'
-import PageHeader from '../../components/PageHeader'
-import TaskForm from '../../components/TaskForm'
-import WrongPage from '../../components/WrongPage'
-import { useTasks } from '../../context/Task'
-import paths from '../../router/paths'
-import { TaskInput, UpdateTaskInput, UUID } from '../../types'
+import Container from 'components/Container'
+import Page from 'components/Page'
+import PageHeader from 'components/PageHeader'
+import TaskForm from 'components/TaskForm'
+import WrongPage from 'components/WrongPage'
+import { useTasks } from 'context/Task'
+import paths from 'router/paths'
+import { TaskInput, UpdateTaskInput, UUID } from 'types'
 
 const EditTask = () => {
   const { updateTask, getTask } = useTasks()

@@ -1,5 +1,5 @@
-import { Task } from '../../types'
-import { getItem, setItem } from '../../utils/storage'
+import { Task } from 'types'
+import { getItem, setItem } from 'utils/storage'
 import { storageKeys } from './storage-keys'
 
 export const getTasksList = (): Task[] =>

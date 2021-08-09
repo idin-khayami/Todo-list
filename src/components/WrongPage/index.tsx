@@ -1,5 +1,5 @@
 import { Box, Link, Typography } from '@material-ui/core'
-import paths from '../../router/paths'
+import paths from 'router/paths'
 
 interface WrongPageProps {
   description: string

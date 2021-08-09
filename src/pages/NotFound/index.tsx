@@ -1,5 +1,5 @@
-import Page from '../../components/Page'
-import WrongPage from '../../components/WrongPage'
+import Page from 'components/Page'
+import WrongPage from 'components/WrongPage'
 
 const NotFound = () => {
   return (

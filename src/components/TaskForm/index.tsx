@@ -16,11 +16,11 @@ import EditIcon from '@material-ui/icons/Edit'
 import {
   VALIDATION_DESCRIPTION_MIN_LENGTH,
   VALIDATION_TITLE_MIN_LENGTH,
-} from '../../constants/validation'
-import paths from '../../router/paths'
-import { getPossibleTaskStatus } from '../../service/status/get-possible-task-status'
-import { getStatusLabel } from '../../service/status/get-status-label'
-import { Task, TaskInput } from '../../types'
+} from 'constants/validation'
+import paths from 'router/paths'
+import { getPossibleTaskStatus } from 'service/status/get-possible-task-status'
+import { getStatusLabel } from 'service/status/get-status-label'
+import { Task, TaskInput } from 'types'
 
 const useStyles = makeStyles(
   (theme) => ({

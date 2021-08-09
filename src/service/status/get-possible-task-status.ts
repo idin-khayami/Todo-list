@@ -1,4 +1,4 @@
-import { TaskStatus } from '../../types'
+import { TaskStatus } from 'types'
 
 const TASK_STATUS_MAP: { [key in TaskStatus]: TaskStatus[] } = {
   ToDo: ['ToDo', 'InProgress'],

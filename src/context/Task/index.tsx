@@ -6,9 +6,9 @@ import {
   useState,
 } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { STATUS_TO_DO } from '../../constants/status'
-import { getTasksList, setTasksList } from '../../service/storage'
-import { CreateTaskInput, Task, UpdateTaskInput, UUID } from '../../types'
+import { STATUS_TO_DO } from 'constants/status'
+import { getTasksList, setTasksList } from 'service/storage'
+import { CreateTaskInput, Task, UpdateTaskInput, UUID } from 'types'
 
 interface TaskContextType {
   tasks: Task[]
