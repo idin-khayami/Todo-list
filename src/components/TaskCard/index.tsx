@@ -1,4 +1,11 @@
-import { Box, Link, makeStyles, Typography } from '@material-ui/core'
+import {
+  Box,
+  Link,
+  makeStyles,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import classNames from 'classnames'
 
@@ -29,6 +36,9 @@ const useStyles = makeStyles(
 )
 
 const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
+  const theme = useTheme()
+  const isSmallMobileScreen = useMediaQuery(theme.breakpoints.down(340))
+  console.log(isSmallMobileScreen)
   const classes = useStyles()
   return (
     <Box
@@ -58,11 +68,18 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
           {description}
         </Typography>
       </Box>
-      <Box display="flex" justifyContent="space-between" mt={1}>
+      <Box
+        display="flex"
+        mt={1}
+        flexDirection={isSmallMobileScreen ? 'column' : undefined}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Box
           bgcolor="info.main"
           color="info.contrastText"
           p={1}
+          width="80px"
           borderRadius={8}
           flexGrow={1}
           textAlign="center"

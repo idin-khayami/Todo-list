@@ -1,16 +1,16 @@
 import { Box, Link, Typography } from '@material-ui/core'
 import paths from 'router/paths'
 
-interface WrongPageProps {
+interface ErrorPageProps {
   description: string
   redirectTo?: string
   pageName?: string
 }
 
-const WrongPage = ({
+const ErrorPage = ({
   description,
   redirectTo = paths.home,
-}: WrongPageProps) => {
+}: ErrorPageProps) => {
   return (
     <Box my="auto" mx={2} textAlign="center">
       <Typography variant="h6" component="p" color="primary">
@@ -25,4 +25,4 @@ const WrongPage = ({
   )
 }
 
-export default WrongPage
+export default ErrorPage

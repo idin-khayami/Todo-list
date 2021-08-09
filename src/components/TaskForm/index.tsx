@@ -42,7 +42,8 @@ interface TaskFormProps {
 const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
   const classes = useStyles()
   const { handleSubmit, control, formState, reset } = useForm<TaskInput>({
-    mode: 'all',
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
     defaultValues: {
       id: task?.id ?? undefined,
       title: task?.title ?? '',
@@ -59,20 +60,27 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
     [onSubmitTask, reset],
   )
 
+  const validate = useCallback((minLength: number) => {
+    return {
+      required: 'This field is required',
+      validate: (value: string): string | undefined => {
+        if (value.length < minLength) {
+          return `This field must have at least ${minLength} characters'`
+        }
+      },
+    }
+  }, [])
+
+  const titleValidator = validate(VALIDATION_TITLE_MIN_LENGTH)
+  const descriptionValidator = validate(VALIDATION_DESCRIPTION_MIN_LENGTH)
+
   return (
     <form onSubmit={handleSubmit(handleSubmitTask)}>
       <Box my={1} width="100%">
         <Controller
           name="title"
           control={control}
-          rules={{
-            required: 'This field is required',
-            validate: (value: string) => {
-              if (value.length < VALIDATION_TITLE_MIN_LENGTH) {
-                return 'This field must have at least 5 characters'
-              }
-            },
-          }}
+          rules={titleValidator}
           defaultValue=""
           render={({ field }) => {
             return (
@@ -94,14 +102,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
         <Controller
           name="description"
           control={control}
-          rules={{
-            required: 'This field is required',
-            validate: (value) => {
-              if (value.length < VALIDATION_DESCRIPTION_MIN_LENGTH) {
-                return 'Task must have a long description'
-              }
-            },
-          }}
+          rules={descriptionValidator}
           defaultValue=""
           render={({ field }) => {
             return (

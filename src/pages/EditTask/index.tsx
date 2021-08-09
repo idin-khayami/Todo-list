@@ -2,10 +2,10 @@ import { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
 import Container from 'components/Container'
+import ErrorPage from 'components/Error'
 import Page from 'components/Page'
 import PageHeader from 'components/PageHeader'
 import TaskForm from 'components/TaskForm'
-import WrongPage from 'components/WrongPage'
 import { useTasks } from 'context/Task'
 import paths from 'router/paths'
 import { TaskInput, UpdateTaskInput, UUID } from 'types'
@@ -34,7 +34,7 @@ const EditTask = () => {
         {task ? (
           <TaskForm onSubmitTask={handleUpdateTask} task={task} />
         ) : (
-          <WrongPage description="Sorry, the task you are looking for does not exist." />
+          <ErrorPage description="Sorry, the task you are looking for does not exist." />
         )}
       </Container>
     </Page>

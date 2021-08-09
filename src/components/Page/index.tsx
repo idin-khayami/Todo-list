@@ -1,13 +1,14 @@
-import { ReactNode } from 'react'
-import { Box } from '@material-ui/core'
+import { Box, BoxProps } from '@material-ui/core'
 
-interface PageProps {
-  children: ReactNode
-}
-
-function Page({ children }: PageProps) {
+function Page({ children, ...otherProps }: BoxProps) {
   return (
-    <Box minHeight="100vh" display="flex" flexDirection="column" flexGrow={1}>
+    <Box
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+      flexGrow={1}
+      {...otherProps}
+    >
       {children}
     </Box>
   )

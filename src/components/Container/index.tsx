@@ -1,13 +1,15 @@
-import { ReactNode } from 'react'
-import { Box } from '@material-ui/core'
+import { Box, BoxProps } from '@material-ui/core'
 
-interface ContainerProps {
-  children: ReactNode
-}
-
-function Container({ children }: ContainerProps) {
+function Container({ children, ...otherProps }: BoxProps) {
   return (
-    <Box display="flex" flexDirection="column" flexGrow={1} mt={2} px={2}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      flexGrow={1}
+      mt={2}
+      px={2}
+      {...otherProps}
+    >
       {children}
     </Box>
   )

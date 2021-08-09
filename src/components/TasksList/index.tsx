@@ -71,7 +71,7 @@ function TaskList({ tasks }: TaskListProps) {
           <Grid container>
             {tasks.map((task, index) => {
               return (
-                <Grid key={index} item xs={6} sm={6} md={4}>
+                <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
                   <TaskCard
                     title={task.title}
                     description={task.description}
