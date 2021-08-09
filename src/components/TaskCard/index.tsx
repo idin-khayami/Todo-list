@@ -70,7 +70,7 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
       </Box>
       <Box
         display="flex"
-        mt={1}
+        mt={isSmallMobileScreen ? 0 : 1}
         flexDirection={isSmallMobileScreen ? 'column' : undefined}
         alignItems="center"
         justifyContent="space-between"
@@ -91,6 +91,7 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
         <Box
           display="flex"
           flexGrow={1}
+          mt={isSmallMobileScreen ? 1 : 0}
           justifyContent="flex-end"
           alignItems="center"
         >
