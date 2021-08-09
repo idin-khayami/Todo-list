@@ -10,7 +10,6 @@ interface WrongPageProps {
 const WrongPage = ({
   description,
   redirectTo = paths.home,
-  pageName = 'Home',
 }: WrongPageProps) => {
   return (
     <Box my="auto" mx={2} textAlign="center">
@@ -19,7 +18,7 @@ const WrongPage = ({
       </Typography>
       <Box my={3} textAlign="center">
         <Link underline="none" href={redirectTo}>
-          Back to {pageName}
+          Back
         </Link>
       </Box>
     </Box>
