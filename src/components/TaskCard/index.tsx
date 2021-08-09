@@ -38,7 +38,6 @@ const useStyles = makeStyles(
 const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
   const theme = useTheme()
   const isSmallMobileScreen = useMediaQuery(theme.breakpoints.down(340))
-  console.log(isSmallMobileScreen)
   const classes = useStyles()
   return (
     <Box
