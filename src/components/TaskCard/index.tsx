@@ -13,7 +13,6 @@ const useStyles = makeStyles(
   () => ({
     textTruncate: {
       display: '-webkit-box',
-      maxWidth: '200px',
       WebkitBoxOrient: 'vertical',
       overflow: 'hidden',
     },
