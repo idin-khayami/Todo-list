@@ -41,7 +41,7 @@ function TaskContext({ children }: TaskContextProps) {
         id: uuidv4(),
         status: STATUS_TO_DO, //status when task created
       }
-      const newTaskList: Task[] = [...tasks, newTask]
+      const newTaskList: Task[] = [newTask, ...tasks]
       setTasks(newTaskList)
       setTasksList(newTaskList)
       return newTask
