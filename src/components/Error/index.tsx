@@ -1,5 +1,6 @@
 import { Box, Link, Typography } from '@material-ui/core'
 import paths from 'router/paths'
+import Container from '../Container'
 
 interface ErrorPageProps {
   description: string
@@ -12,7 +13,7 @@ const ErrorPage = ({
   redirectTo = paths.home,
 }: ErrorPageProps) => {
   return (
-    <Box my="auto" mx={2} textAlign="center">
+    <Container textAlign="center" justifyContent="center">
       <Typography variant="h6" component="p" color="primary">
         {description}
       </Typography>
@@ -21,7 +22,7 @@ const ErrorPage = ({
           Back
         </Link>
       </Box>
-    </Box>
+    </Container>
   )
 }
 

@@ -1,24 +1,21 @@
-import { Box, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
+import Container from '../Container'
 
 const NoResult = () => {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      flexGrow={1}
-      color="text.primary"
-      py={3}
+    <Container
+      color="text"
       mx="auto"
+      justifyContent="center"
       textAlign="center"
     >
-      <Typography variant="h6" component="h1">
+      <Typography variant="h6" component="p">
         Yo have nothing to do.
       </Typography>
-      <Typography variant="h6" component="h1">
+      <Typography variant="h6" component="p">
         Go get some sleep.
       </Typography>
-    </Box>
+    </Container>
   )
 }
 
