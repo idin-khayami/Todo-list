@@ -168,7 +168,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Link href={paths.taskList} underline="none">
+              <Link href={paths.home} underline="none">
                 <Button variant="outlined" fullWidth size="large">
                   Cancel
                 </Button>

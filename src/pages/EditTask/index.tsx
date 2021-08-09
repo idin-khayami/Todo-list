@@ -1,8 +1,11 @@
 import { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
-import { Box, Link, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
+import Container from '../../components/Container'
+import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 import TaskForm from '../../components/TaskForm'
+import WrongPage from '../../components/WrongPage'
 import { useTasks } from '../../context/Task'
 import paths from '../../router/paths'
 import { TaskInput, UpdateTaskInput, UUID } from '../../types'
@@ -16,34 +19,25 @@ const EditTask = () => {
     (taskData: TaskInput) => {
       // as this is an update case we can cast `taskData` to `UpdateTaskInput`
       updateTask(taskData as UpdateTaskInput)
-      window.location.href = paths.taskList
+      window.location.href = paths.home
     },
     [updateTask],
   )
 
   return (
-    <>
+    <Page>
       <PageHeader title="Edit" />
-      <Box display="flex" flexDirection="column" flexGrow="1" my={1} p={2}>
+      <Container>
         <Typography variant="h6" component="p">
           Edit Task
         </Typography>
         {task ? (
           <TaskForm onSubmitTask={handleUpdateTask} task={task} />
         ) : (
-          <Box my={2} textAlign="center">
-            <Typography variant="h6" component="p" color="primary">
-              Sorry, the task you are looking for does not exist.
-            </Typography>
-            <Box my={3} textAlign="center">
-              <Link underline="none" href={paths.taskList}>
-                Go Home
-              </Link>
-            </Box>
-          </Box>
+          <WrongPage description="Sorry, the task you are looking for does not exist." />
         )}
-      </Box>
-    </>
+      </Container>
+    </Page>
   )
 }
 

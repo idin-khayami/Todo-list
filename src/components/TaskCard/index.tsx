@@ -65,7 +65,7 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
           color="info.contrastText"
           p={1}
           borderRadius={8}
-          flexGrow="1"
+          flexGrow={1}
           textAlign="center"
         >
           <Typography variant="body1" component="h6">

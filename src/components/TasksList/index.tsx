@@ -2,6 +2,7 @@ import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
 import classNames from 'classnames'
 import { getStatusLabel } from '../../service/status/get-status-label'
 import { Task } from '../../types'
+import Container from '../Container'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
 
@@ -14,12 +15,13 @@ const useStyles = makeStyles(
     taskListContainer: {
       overflowY: 'auto',
       '&::-webkit-scrollbar': {
-        width: '0.4em',
+        width: '0.5em',
       },
       '&::-webkit-scrollbar-track': {},
       '&::-webkit-scrollbar-thumb': {
         backgroundColor: theme.palette.common.black,
         borderRadius: theme.shape.borderRadius,
+        height: '80px',
       },
     },
   }),
@@ -35,7 +37,7 @@ interface TaskListProps {
 function TaskList({ tasks }: TaskListProps) {
   const classes = useStyles()
   return (
-    <Box px={2} flexGrow={1} display="flex" flexDirection="column">
+    <Container>
       <Box width="100%">
         <Box
           flexGrow={1}
@@ -61,13 +63,12 @@ function TaskList({ tasks }: TaskListProps) {
         bgcolor="primary.light"
         flexDirection="column"
         flexGrow={1}
-        height="80px"
-        p={3}
-        px={2}
+        height="70px"
+        p={1}
         mt={-3}
       >
         {tasks.length > 0 ? (
-          <Grid container spacing={1}>
+          <Grid container>
             {tasks.map((task, index) => {
               return (
                 <Grid key={index} item xs={6} sm={6} md={4}>
@@ -85,7 +86,7 @@ function TaskList({ tasks }: TaskListProps) {
           <NoResult />
         )}
       </Box>
-    </Box>
+    </Container>
   )
 }
 
