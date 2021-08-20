@@ -23,3 +23,5 @@ export type CreateTaskInput = BaseTask
 export type UpdateTaskInput = Task
 
 export type TaskInput = CreateTaskInput | UpdateTaskInput
+
+export type DeleteFunction = (id: UUID) => void

@@ -1,19 +1,24 @@
 import {
   Box,
+  IconButton,
   Link,
   makeStyles,
   Typography,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import classNames from 'classnames'
+import { DeleteFunction, UUID } from 'types'
 
 interface TaskCardProps {
+  id: UUID
   title: string
   description: string
   status: string
   link: string
+  onDelete: DeleteFunction
 }
 
 const useStyles = makeStyles(
@@ -35,10 +40,18 @@ const useStyles = makeStyles(
   },
 )
 
-const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
+const TaskCard = ({
+  id,
+  title,
+  description,
+  status,
+  link,
+  onDelete,
+}: TaskCardProps) => {
   const theme = useTheme()
   const isSmallMobileScreen = useMediaQuery(theme.breakpoints.down(340))
   const classes = useStyles()
+
   return (
     <Box
       bgcolor="white"
@@ -94,6 +107,14 @@ const TaskCard = ({ title, description, status, link }: TaskCardProps) => {
           justifyContent="flex-end"
           alignItems="center"
         >
+          <IconButton
+            aria-label="Delete"
+            onClick={() => {
+              onDelete(id)
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
           <Link color="textPrimary" href={link}>
             <EditIcon />
           </Link>
