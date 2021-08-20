@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://gitlab.com/idin.khayami/rechat-frontend-challenge/compare/v0.1.1...v0.1.2) (2021-08-20)
+
+### Features
+
+- add delete into context and component ([fb3653b](https://gitlab.com/idin.khayami/rechat-frontend-challenge/commit/fb3653beea97bcc76bce7685e5033b32a0191f5b))
+- add delete into home and implement search ([4096ec7](https://gitlab.com/idin.khayami/rechat-frontend-challenge/commit/4096ec7526b8b9009e27cb6b404896fe18993c09))
+
 ### 0.1.1 (2021-08-09)
 
 ### Features
