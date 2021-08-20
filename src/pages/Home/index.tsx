@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Box, Typography } from '@material-ui/core'
 import Container from 'components/Container'
 import Page from 'components/Page'
@@ -6,10 +6,11 @@ import PageHeader from 'components/PageHeader'
 import TaskForm from 'components/TaskForm'
 import TaskList from 'components/TasksList'
 import { useTasks } from 'context/Task'
-import { TaskInput } from 'types'
+import { TaskInput, UUID } from 'types'
 
 const Home = () => {
-  const { createTask, tasks } = useTasks()
+  const { createTask, tasks, deleteTask } = useTasks()
+  const [search, setSearch] = useState('')
 
   const handleAddNewTask = useCallback(
     (newTask: TaskInput) => {
@@ -18,6 +19,18 @@ const Home = () => {
     },
     [createTask],
   )
+
+  const onDelete = useCallback(
+    (id: UUID) => {
+      deleteTask(id)
+    },
+    [deleteTask],
+  )
+
+  const filteredTasks = useMemo(() => {
+    // we can use startWith and includes both
+    return tasks.filter((task) => task.title.includes(search))
+  }, [search, tasks])
 
   return (
     <Page>
@@ -31,7 +44,11 @@ const Home = () => {
         </Container>
       </Box>
       <Box width="100%" display="flex" flexGrow={1}>
-        <TaskList tasks={tasks} />
+        <TaskList
+          tasks={filteredTasks}
+          onDelete={onDelete}
+          onFilterTasks={setSearch}
+        />
       </Box>
     </Page>
   )

@@ -1,7 +1,7 @@
-import { Box, Grid, makeStyles, Typography } from '@material-ui/core'
+import { Box, Grid, makeStyles, TextField, Typography } from '@material-ui/core'
 import classNames from 'classnames'
 import { getStatusLabel } from 'service/status/get-status-label'
-import { Task } from 'types'
+import { DeleteFunction, Task } from 'types'
 import Container from '../Container'
 import NoResult from '../NoResult'
 import TaskCard from '../TaskCard'
@@ -32,9 +32,11 @@ const useStyles = makeStyles(
 
 interface TaskListProps {
   tasks: Task[]
+  onDelete: DeleteFunction
+  onFilterTasks: (title: string) => void
 }
 
-function TaskList({ tasks }: TaskListProps) {
+function TaskList({ tasks, onDelete, onFilterTasks }: TaskListProps) {
   const classes = useStyles()
   return (
     <Container>
@@ -44,12 +46,21 @@ function TaskList({ tasks }: TaskListProps) {
           className={classes.topBorderRadius}
           color="primary.contrastText"
           bgcolor="primary.main"
-          p={2}
-          height="50px"
+          py={1}
+          px={2}
+          height="100px"
+          flexDirection="column"
         >
           <Typography variant="h6" component="h1">
             Tasks
           </Typography>
+          <TextField
+            label="search"
+            fullWidth
+            size="medium"
+            variant="filled"
+            onChange={(e) => onFilterTasks(e.target.value)}
+          />
         </Box>
       </Box>
       <Box
@@ -65,7 +76,7 @@ function TaskList({ tasks }: TaskListProps) {
         flexGrow={1}
         height="70px"
         p={1}
-        mt={-3}
+        mt={-1}
       >
         {tasks.length > 0 ? (
           <Grid container>
@@ -73,10 +84,12 @@ function TaskList({ tasks }: TaskListProps) {
               return (
                 <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
                   <TaskCard
+                    id={task.id}
                     title={task.title}
                     description={task.description}
                     status={getStatusLabel(task.status)}
                     link={`/edit-task/${task.id}`}
+                    onDelete={onDelete}
                   />
                 </Grid>
               )
