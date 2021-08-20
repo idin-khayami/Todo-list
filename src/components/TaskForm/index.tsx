@@ -84,6 +84,7 @@ const TaskForm = ({ task, onSubmitTask }: TaskFormProps) => {
           render={({ field }) => {
             return (
               <TextField
+                autoFocus
                 label="Title"
                 variant="filled"
                 fullWidth
